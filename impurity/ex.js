@@ -36,11 +36,22 @@ function sortStudentsByID() {
     return students;
 }
 
-// *************************************
+// 2. Adapter Example
+function getStudentsByID(curStudents) {
+    // Set up local copy of global state
+    var originalStudents = students.slice();
 
-// modify/move this function
-function getStudentsByID() {
-    return students;
+    // Set up "initial" state of array
+    students = curStudents;
+
+    // Get modified list of students (with mutations)
+    var newStudents = sortStudentsByID();
+
+    // Restore original state of global variable
+    students = originalStudents;
+
+    // Return modified array
+    return newStudents;
 }
 
 // *************************************
